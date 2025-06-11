@@ -24,17 +24,18 @@
 import icon from "./ASSETS/icon.png";
 
 class ExampleMod extends OMod {
-    static title:string = "OvenMDK Example Mod";
-    static description:string = "Example mod for OvenMDK INDEV";
-    static credits:string = "Block_2222";
-    static icon:string = icon;
+  static title: string = "OvenMDK Example Mod";
+  static description: string = "Example mod for OvenMDK INDEV";
+  static credits: string = "Block_2222";
+  static icon: string = icon;
 
-    static acceptedMinecraftVersions = ["1.8.8"];
-    static acceptedEFVersions = ["2.7.3"];
+  static acceptedMinecraftVersions = ["1.8.8"];
+  static acceptedEFVersions = ["2.7.3"];
 
-    static init():void {
-        console.log("ExampleMod Loaded!");
-    }
+  static init(): void {
+    console.log("logging uh idk");
+    new OItem();
+  }
 }
 
 OvenMDK.registerMod(ExampleMod);
