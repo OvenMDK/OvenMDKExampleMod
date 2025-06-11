@@ -34,7 +34,50 @@ class ExampleMod extends OMod {
 
   static init(): void {
     console.log("logging uh idk");
-    new OItem();
+    const oitem = new OItem();
+
+    ModAPI.dedicatedServer.appendCode(() => oitem);
+
+    ModAPI.addEventListener("lib:asyncsink", async () => {
+      ModAPI.addEventListener(
+        "lib:asyncsink:registeritems",
+        (renderItem: any) => {
+          renderItem.registerItem(
+            oitem.example_item,
+            ModAPI.util.str("exampleitem")
+          );
+        }
+      );
+
+      AsyncSink.L10N.set("item.exampleitem.name", "Example Item");
+
+      AsyncSink.setFile(
+        "resourcepacks/AsyncSinkLib/assets/minecraft/models/item/exampleitem.json",
+        JSON.stringify({
+          parent: "builtin/generated",
+          textures: {
+            layer0: "items/exampleitem",
+          },
+          display: {
+            thirdperson: {
+              rotation: [-90, 0, 0],
+              translation: [0, 1, -3],
+              scale: [0.55, 0.55, 0.55],
+            },
+            firstperson: {
+              rotation: [0, -135, 25],
+              translation: [0, 4, 2],
+              scale: [1.7, 1.7, 1.7],
+            },
+          },
+        })
+      );
+
+      AsyncSink.setFile(
+        "resourcepacks/AsyncSinkLib/assets/minecraft/textures/items/exampleitem.png",
+        await (await fetch(icon)).arrayBuffer()
+      );
+    });
   }
 }
 
