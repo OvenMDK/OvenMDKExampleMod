@@ -39,9 +39,10 @@ declare class OMod {
     static init(): void;
     static postInit(): void;
 }
-
+declare const AsyncSink: any;
 declare class OvenMDK {
     static mods: Array<any>;
     
     static registerMod(modClass:any): void;
 }
+declare function OItem(texture): void;
