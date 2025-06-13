@@ -23,26 +23,29 @@
 */
 
 declare class OMod {
-    static title:string;
-    static version:string;
-    static description:string;
-    static icon:string;
+  static title: string;
+  static version: string;
+  static description: string;
+  static icon: string;
 
-    static acceptedMinecraftVersions:Array<string>;
-    static acceptedEaglerUpdates:Array<string>;
-    static acceptedEFVersions:Array<string>;
-    static acceptedEFFlavour:string;
+  static acceptedMinecraftVersions: Array<string>;
+  static acceptedEaglerUpdates: Array<string>;
+  static acceptedEFVersions: Array<string>;
+  static acceptedEFFlavour: string;
 
-    static clientSideOnly:boolean;
-    static serverSideOnly:boolean;
-    
-    static init(): void;
-    static postInit(): void;
+  static clientSideOnly: boolean;
+  static serverSideOnly: boolean;
+  static config(): void;
+  static init(): void;
+  static postInit(): void;
 }
 declare const AsyncSink: any;
 declare class OvenMDK {
-    static mods: Array<any>;
-    
-    static registerMod(modClass:any): void;
+  static mods: Array<any>;
+
+  static registerMod(modClass: any): void;
 }
-declare function OItem(texture): void;
+/**
+ * @param {string} item_name
+ **/
+declare function OItem(item_name, item_id, texture): void;
