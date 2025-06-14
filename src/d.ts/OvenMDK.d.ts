@@ -48,4 +48,9 @@ declare class OvenMDK {
 /**
  * @param {string} item_name
  **/
-declare function OItem(item_name, item_id, texture): void;
+declare function OItem(
+  item_name: string,
+  item_id: string,
+  texture: string,
+  onRightClick: (itemstack: any) => void
+): void;

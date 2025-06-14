@@ -26,7 +26,7 @@ import icon from "./ASSETS/icon.png";
 class ExampleMod extends OMod {
   static title: string = "OvenMDK Example Mod";
   static description: string = "Example mod for OvenMDK INDEV";
-  static credits: string = "Block_2222";
+  static credits: string = "Block_2222 and BendieGames";
   static icon: string = icon;
 
   static acceptedMinecraftVersions = ["1.8.8"];
@@ -36,8 +36,10 @@ class ExampleMod extends OMod {
     console.log("logging uh idk");
     const itemTexture =
       "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKZJREFUOE9j/P//PxMDBIBoEP6HREOl4PLIciA2AyPIgMcM//7KgvWSDJjBBpx9/+YvJzc3Sbq12DhB6sEGsJ19/+YnmQawYhigzc7FcPXnN4KugbqAHWQAy9n3b34T4wJkw6EGYLqAoNVQBWS5ANlwZBfAvUCs/0EGkW0AzBKqGoCSDgh5A80F2KMRpAgfAKUT6kcjsfEPUycmKMQgy8AETkgUZWcAS3CPIf4oSPsAAAAASUVORK5CYII=";
-
-    const myItem = new OItem("My Sword", "my_sword", itemTexture);
+    
+    const myItem = new OItem("My Sword", "my_sword", itemTexture, (itemstack) => {
+      ModAPI.displayToChat("Used item!")
+    });
 
     myItem.register();
     myItem.registerClient();
