@@ -46,7 +46,18 @@ class ExampleMod extends OMod {
       }
     );
     exampleItem.registerClient();
+
+    const customBlock = new OBlock(
+      "Example Block",
+      "example_block",
+      icon,
+      (world, pos, state) => {
+        const w = ModAPI.util.wrap(world);
+        const p = ModAPI.util.wrap(pos);
+        ModAPI.displayToChat("Block broken yayaayay");
+      }
+    );
+    customBlock.registerBlock();
   }
 }
-
 OvenMDK.registerMod(ExampleMod);
