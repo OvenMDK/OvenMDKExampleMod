@@ -35,6 +35,7 @@ declare class OMod {
 
   static clientSideOnly: boolean;
   static serverSideOnly: boolean;
+  static Debug_mode: boolean;
   static config(): void;
   static init(): void;
   static postInit(): void;
@@ -46,11 +47,58 @@ declare class OvenMDK {
   static registerMod(modClass: any): void;
 }
 /**
- * @param {string} item_name
- **/
+ * Represents a custom item in the system.
+ *
+ * @param item_name - The display name of the item.
+ * @param item_id - The unique identifier for the item.
+ * @param texture - The texture path or identifier for the item.
+ * @param onRightClick - A callback function triggered when the item is right-clicked.
+ *                        Receives the current item stack as an argument.
+ *
+ * @example
+ * ```ts
+ * const Magic_Wand = new OItem(
+ *   "Magic Wand",
+ *   "magic_wand_001",
+ *   "textures/items/magic_wand.png",
+ *   (itemstack) => {
+ *     console.log("Right-clicked item:", itemstack);
+ *     // Perform custom logic here
+ *   }
+ * );
+ *
+ * ```
+ */
 declare function OItem(
   item_name: string,
   item_id: string,
   texture: string,
   onRightClick: (itemstack: any) => void
 ): void;
+
+declare namespace OItem {
+  /**
+   * Registers the client-side handlers or assets for OItem.
+   *
+   * @example
+   * ```ts
+   * const Magic_Wand = new OItem(
+   *   "Magic Wand",
+   *   "magic_wand_001",
+   *   "textures/items/magic_wand.png",
+   *   (itemstack) => {
+   *     console.log("Right-clicked item:", itemstack);
+   *     // Perform custom logic here
+   *   }
+   * );
+   * Magic_Wand.registerClient();
+   * ```
+   */
+  function registerClient(): void;
+  /**
+   * @deprecated This function is deprecated due to a
+   * function that runs it, which removed the need for
+   * manual activation/
+   */
+  function register(): void;
+}
