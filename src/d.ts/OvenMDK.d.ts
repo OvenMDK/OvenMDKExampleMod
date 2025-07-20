@@ -102,3 +102,59 @@ declare namespace OItem {
    */
   function register(): void;
 }
+
+/**
+ * Represents a custom block in the system.
+ *
+ * @param block_name - The display name of the block.
+ * @param block_id - The unique identifier for the block.
+ * @param texture - The texture path or identifier for the block.
+ * @param onDestroy - A callback function triggered when the block is destroyed.
+ *
+ * @example
+ * ```ts
+ * const Custom_Block = new OBlock(
+ *   "Custom Block",
+ *   "custom_block_001",
+ *   "textures/blocks/custom_block.png",
+ *   ($blockpos) => {
+ *     console.log("Block destroyed at:" $blockpos);
+ *     // Perform custom logic here
+ *   }
+ * );
+ *
+ * ```
+ */
+declare function OBlock(
+  block_name: string,
+  block_id: string,
+  texture: string,
+  onBreak?: ($world: any, $blockpos: any, $blockstate: any) => void
+): void;
+
+declare namespace OBlock {
+  /**
+   * Registers a OBlock.
+   *
+   * @example
+   * ```ts
+   * const Custom_Block = new OBlock(
+   *   "Custom Block",
+   *   "custom_block_001",
+   *   "textures/blocks/custom_block.png",
+   *   ($blockpos) => {
+   *     console.log("Block destroyed at:" $blockpos);
+   *     // Perform custom logic here
+   *   }
+   * );
+   * Custom_Block.registerBlock();
+   * ```
+   */
+  function registerBlock(): void;
+  /**
+   * @deprecated This function is deprecated due to a
+   * function that runs it, which removed the need for
+   * manual activation.
+   */
+  function registerClient(): void;
+}

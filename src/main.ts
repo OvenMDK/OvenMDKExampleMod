@@ -30,7 +30,7 @@ class ExampleMod extends OMod {
   static icon: string = icon;
 
   static acceptedMinecraftVersions = ["1.8.8"];
-  static acceptedEFVersions = ["2.7.3"];
+  static acceptedEFVersions = ["2.7.94"];
 
   static init(): void {
     console.log("logging uh idk");
@@ -38,24 +38,25 @@ class ExampleMod extends OMod {
       "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKZJREFUOE9j/P//PxMDBIBoEP6HREOl4PLIciA2AyPIgMcM//7KgvWSDJjBBpx9/+YvJzc3Sbq12DhB6sEGsJ19/+YnmQawYhigzc7FcPXnN4KugbqAHWQAy9n3b34T4wJkw6EGYLqAoNVQBWS5ANlwZBfAvUCs/0EGkW0AzBKqGoCSDgh5A80F2KMRpAgfAKUT6kcjsfEPUycmKMQgy8AETkgUZWcAS3CPIf4oSPsAAAAASUVORK5CYII=";
 
     const exampleItem = new OItem(
-      "Example Item",
-      "example_item",
+      "Example OItem",
+      "example_OItem",
       itemTexture,
       (itemstack) => {
-        ModAPI.displayToChat("Used example item!");
+        ModAPI.displayToChat("Used example OItem!");
       }
     );
     exampleItem.register();
-
-    //const customBlock = new OBlock(
-      //"Example Block",
-      //"example_block",
-      //icon,
-      //(world, pos, state) => {
-        //ModAPI.displayToChat("Block broken yayaayay");
-     // }
-    //);
-    //customBlock.registerBlock();
+    // Blocks still broken -Bendie
+    const customBlock = new OBlock(
+      "Example OBlock",
+      "example_Oblock",
+      icon,
+      (world, pos, state) => {
+        ModAPI.displayToChat("Block broken yayaayay");
+        console.log(pos)
+      }
+    );
+    customBlock.register();
   }
 }
 OvenMDK.registerMod(ExampleMod);
