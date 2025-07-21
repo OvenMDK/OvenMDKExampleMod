@@ -47,7 +47,7 @@ class ExampleMod extends OMod {
         console.log("Used example item!")
       }
     );
-    exampleItem.register();
+    exampleItem.registerItem();
     // Blocks still broken -Bendie
     const customBlock = new OBlock(
       "Example OBlock",
