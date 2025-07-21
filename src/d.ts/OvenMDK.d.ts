@@ -51,6 +51,7 @@ declare class OvenMDK {
  *
  * @param item_name - The display name of the item.
  * @param item_id - The unique identifier for the item.
+ * @param itemstack - The maximum stack size for the item.
  * @param texture - The texture path or identifier for the item.
  * @param onRightClick - A callback function triggered when the item is right-clicked.
  *                        Receives the current item stack as an argument.
@@ -72,6 +73,7 @@ declare class OvenMDK {
 declare function OItem(
   item_name: string,
   item_id: string,
+  itemstack: number,
   texture: string,
   onRightClick: (itemstack: any) => void
 ): void;
@@ -85,22 +87,23 @@ declare namespace OItem {
    * const Magic_Wand = new OItem(
    *   "Magic Wand",
    *   "magic_wand_001",
+   *    1,
    *   "textures/items/magic_wand.png",
    *   (itemstack) => {
    *     console.log("Right-clicked item:", itemstack);
    *     // Perform custom logic here
    *   }
    * );
-   * Magic_Wand.registerClient();
+   * Magic_Wand.registerItem();
    * ```
    */
-  function registerClient(): void;
+  function registerItem(): void;
   /**
    * @deprecated This function is deprecated due to a
    * function that runs it, which removed the need for
    * manual activation/
    */
-  function register(): void;
+  function registerClient(): void;
 }
 
 /**
@@ -109,7 +112,7 @@ declare namespace OItem {
  * @param block_name - The display name of the block.
  * @param block_id - The unique identifier for the block.
  * @param texture - The texture path or identifier for the block.
- * @param onDestroy - A callback function triggered when the block is destroyed.
+ * @param onBreak - A callback function triggered when the block is destroyed.
  *
  * @example
  * ```ts

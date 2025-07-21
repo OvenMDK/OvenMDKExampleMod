@@ -40,6 +40,7 @@ class ExampleMod extends OMod {
     const exampleItem = new OItem(
       "Example OItem",
       "example_OItem",
+      1,
       itemTexture,
       ($itemstack) => {
         ModAPI.displayToChat("Used example OItem!");
