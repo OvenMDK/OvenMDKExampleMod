@@ -44,11 +44,11 @@ class ExampleMod extends OMod {
       itemTexture,
       ($itemstack) => {
         ModAPI.displayToChat("Used example OItem!");
-        console.log("Used example item!")
+        console.log("Used example item!");
       }
     );
     exampleItem.registerItem();
-    
+
     const customBlock = new OBlock(
       "Example OBlock",
       "example_Oblock",
@@ -59,6 +59,9 @@ class ExampleMod extends OMod {
       }
     );
     customBlock.registerBlock();
+    simplecommand("/", "example_ocommand", () => {
+      ModAPI.displayToChat("ran example ocommand!");
+    });
   }
 }
 OvenMDK.registerMod(ExampleMod);
