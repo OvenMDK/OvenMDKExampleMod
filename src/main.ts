@@ -36,10 +36,10 @@ class ExampleMod extends OMod {
     console.log("logging uh idk");
     const itemTexture =
       "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKZJREFUOE9j/P//PxMDBIBoEP6HREOl4PLIciA2AyPIgMcM//7KgvWSDJjBBpx9/+YvJzc3Sbq12DhB6sEGsJ19/+YnmQawYhigzc7FcPXnN4KugbqAHWQAy9n3b34T4wJkw6EGYLqAoNVQBWS5ANlwZBfAvUCs/0EGkW0AzBKqGoCSDgh5A80F2KMRpAgfAKUT6kcjsfEPUycmKMQgy8AETkgUZWcAS3CPIf4oSPsAAAAASUVORK5CYII=";
-
+    // IDs must be lowercase and unique.
     const exampleItem = new OItem(
       "Example OItem",
-      "example_OItem",
+      "example_oItem",
       1,
       itemTexture,
       ($itemstack) => {
@@ -48,10 +48,21 @@ class ExampleMod extends OMod {
       }
     );
     exampleItem.registerItem();
-
+    const exampleItem2 = new OItem(
+      "Example OItem2",
+      "example_oItem2",
+      1,
+      itemTexture,
+      ($itemstack) => {
+        ModAPI.displayToChat("Used example OItem2!");
+        console.log("Used example item2!");
+      }
+    );
+    exampleItem2.registerItem();
+    // block IDs have to be lowercase otherwise errors
     const customBlock = new OBlock(
       "Example OBlock",
-      "example_Oblock",
+      "example_oblock",
       itemTexture,
       (world, pos, state) => {
         ModAPI.displayToChat("Block broken yayaayay");
@@ -59,8 +70,27 @@ class ExampleMod extends OMod {
       }
     );
     customBlock.registerBlock();
+    const customBlock2 = new OBlock(
+      "Example OBlock2",
+      "example_oblock2",
+      itemTexture,
+      (world, pos, state) => {
+        ModAPI.displayToChat("Block2 broken yayaayay");
+        console.log(pos);
+      }
+    );
+    // DEV NOTE: OEntities are not yet implemented in OvenMDK, this is just a placeholder for the name.
+    const coolEntity = new OEntity(
+      "Example OEntity",
+      "example_oentity",
+      itemTexture,
+      "ModelCow",
+    );
+    coolEntity.registerOEntity();
+    customBlock2.registerBlock();
+    // DEV NOTE: OCommands are not yet implemented in OvenMDK, this is just an placeholder for the name.
     simplecommand("/", "example_ocommand", () => {
-      ModAPI.displayToChat("ran example ocommand!");
+      ModAPI.displayToChat("ran example Ocommand!");
     });
   }
 }
