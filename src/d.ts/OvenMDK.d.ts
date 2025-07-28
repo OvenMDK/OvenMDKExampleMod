@@ -161,3 +161,65 @@ declare namespace OBlock {
    */
   function registerClient(): void;
 }
+/**
+ * Represents a custom entity in the OvenMDK environment.
+ *
+ * @param entity_name - The display name of the entity.
+ * @param entity_id - The unique identifier for the entity (lowercase, unique).
+ * @param texture - The texture path or base64 identifier for the entity.
+ * @param model - The model name to be used (e.g., "ModelCow", "ModelPlayer").
+ *
+ * @example
+ * ```ts
+ * const CoolCow = new OEntity(
+ *   "Cool Cow",
+ *   "cool_cow",
+ *   "textures/entities/cow.png",
+ *   "ModelCow"
+ * );
+ * CoolCow.registerOEntity();
+ * ```
+ */
+declare function OEntity(
+  entity_name: string,
+  entity_id: string,
+  texture: string,
+  model: string
+): void;
+
+declare namespace OEntity {
+  /**
+   * Registers the custom OEntity in the game.
+   *
+   * @example
+   * ```ts
+   * const CoolCow = new OEntity(
+   *   "Cool Cow",
+   *   "cool_cow",
+   *   "textures/entities/cow.png",
+   *   "ModelCow"
+   * );
+   * CoolCow.registerOEntity();
+   * ```
+   */
+  function registerOEntity(): void;
+}
+/**
+ * Registers a custom command in OvenMDK.
+ *
+ * @param prefix - The command prefix (should be `/` or empty).
+ * @param command_id - Unique identifier for the command.
+ * @param handler - Callback function invoked when the command is run.
+ *
+ * @example
+ * ```ts
+ * simplecommand("/", "greet", () => {
+ *   ModAPI.displayToChat("Hello, player!");
+ * });
+ * ```
+ */
+declare function simplecommand(
+  prefix: string,
+  command_id: string,
+  handler: () => void
+): void;

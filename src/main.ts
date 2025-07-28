@@ -81,10 +81,10 @@ class ExampleMod extends OMod {
     );
     // DEV NOTE: OEntities are not yet implemented in OvenMDK, this is just a placeholder for the name.
     const coolEntity = new OEntity(
-      "Example OEntity",
+      "ExampleOEntity",
       "example_oentity",
       itemTexture,
-      "ModelCow",
+      "ModelCow"
     );
     coolEntity.registerOEntity();
     customBlock2.registerBlock();
