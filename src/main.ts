@@ -22,7 +22,7 @@
     with Oven MDK. If not, see <https://www.gnu.org/licenses/>.
 */
 import icon from "./ASSETS/icon.png";
-
+import example_oentity from "./ASSETS/example_oentity.png";
 class ExampleMod extends OMod {
   static title: string = "OvenMDK Example Mod";
   static description: string = "Example mod for OvenMDK INDEV";
@@ -83,7 +83,7 @@ class ExampleMod extends OMod {
     const coolEntity = new OEntity(
       "ExampleOEntity",
       "example_oentity",
-      itemTexture,
+      example_oentity,
       "ModelCow"
     );
     coolEntity.registerOEntity();
