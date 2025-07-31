@@ -1,11 +1,11 @@
 /*
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	OvenMDK Example Mod
-	Example mod for OvenMDK INDEV
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  OvenMDK Example Mod
+  Example mod for OvenMDK INDEV
 	
-	Copyright 2025 Block_2222
+  Copyright 2025 Block_2222
     Licenced under GNU LGPL-3.0-or-later
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     This file is part of OvenMDK.
 
@@ -23,6 +23,7 @@
 */
 import icon from "./ASSETS/icon.png";
 import example_oentity from "./ASSETS/example_oentity.png";
+import spawn_cow from "./ASSETS/spawn_cow.png";
 class ExampleMod extends OMod {
   static title: string = "OvenMDK Example Mod";
   static description: string = "Example mod for OvenMDK INDEV";
@@ -79,14 +80,34 @@ class ExampleMod extends OMod {
         console.log(pos);
       }
     );
-    // DEV NOTE: OEntities are not yet implemented in OvenMDK, this is just a placeholder for the name.
-    const coolEntity = new OEntity(
-      "ExampleOEntity",
-      "example_oentity",
-      example_oentity,
-      "ModelCow"
-    );
-    coolEntity.registerOEntity();
+    if (ModAPI.is_1_12) {
+
+      // DEV NOTE: OEntities are not yet completed in OvenMDK, this is just a placeholder for the name.
+      const coolEntity = new OEntity(
+        "ExampleOEntity",
+        "example_oentity",
+        example_oentity,
+        "ModelCow"
+      );
+      coolEntity.registerOEntity();
+      const coolEntity_spawnegg = new OItem(
+        "ExampleOEntity Spawn Egg",
+        "example_oentity_spawnegg",
+        64,
+        spawn_cow,
+        ($itemstack, $world, $player) => {
+          var player = ModAPI.util.wrap($player);
+          var world = ModAPI.util.wrap($world);
+          ModAPI.displayToChat("Spawned ExampleOEntity!");
+          console.log("Spawned ExampleOEntity!");
+          var coolEntityData = new globalThis["OEntity.example_oentity"].Entityexample_oentity(ModAPI.mc.theWorld.getRef());
+          var pos = player.getPosition()
+          coolEntityData.$setPosition(pos.getX(), pos.getY(), pos.getZ());
+          ModAPI.mc.theWorld.spawnEntityInWorld(coolEntityData);
+        }
+      );
+      coolEntity_spawnegg.registerItem();
+    }
     customBlock2.registerBlock();
     // DEV NOTE: OCommands are not yet implemented in OvenMDK, this is just an placeholder for the name.
     simplecommand("/", "example_ocommand", () => {

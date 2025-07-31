@@ -40,7 +40,7 @@ declare class OMod {
   static init(): void;
   static postInit(): void;
 }
-declare const AsyncSink: any;
+
 declare class OvenMDK {
   static mods: Array<any>;
 
@@ -75,7 +75,7 @@ declare function OItem(
   item_id: string,
   itemstack: number,
   texture: string,
-  onRightClick: (itemstack: any) => void
+  onRightClick: ($itemstack?: any, $world?: any) => void
 ): void;
 
 declare namespace OItem {

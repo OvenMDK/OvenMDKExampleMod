@@ -7,7 +7,7 @@
 
     EaglerForge/ModAPI by: ZXMushroom63, radmanplays, Leah Anderson(otterdev)
 */
-
+declare const AsyncSink: any;
 /**
  * A method used in Reflect Class
  * @see {@link https://eaglerforge.github.io/EaglerForgeInjector/docs/apidoc/reflect.html} Reflect Documentation
@@ -53,7 +53,7 @@ declare namespace ModAPI {
      * GNU lmao
      */
     let GNU: string;
-    
+    let isServer: boolean;
     /**
      * Lets you easily add credits to Eaglercraft’s credits.txt
      * @example
@@ -65,7 +65,7 @@ declare namespace ModAPI {
      * @see {@link https://github.com/eaglerforge}
      */
     function addCredit(category: string, contributor: string, contents: string): void;
-
+    let is_1_12: boolean;
     /**
      * Used to register an event handler.
      * @example
@@ -78,7 +78,20 @@ declare namespace ModAPI {
      * @see {@link https://eaglerforge.github.io/EaglerForgeInjector/docs/apidoc/events.html} Events Documentation
     */
     function addEventListener(eventName: string, callback: Function): void;
-
+    namespace blockSounds {
+        let WOOD: any;
+        let GRAVEL: any;
+        let STONE: any;
+        let METAL: any;
+        let GLASS: any;
+        let CLOTH: any;
+        let SAND: any;
+        let PLANT: any;
+        let SNOW: any;
+        let LADDER: any;
+        let ANVIL: any;
+        let SLIME: any;
+    }
     /**
      * This module is used to interact and create arrays easily.
      * @see {@link https://eaglerforge.github.io/EaglerForgeInjector/docs/apidoc/array.html} Array Documentation
