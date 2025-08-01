@@ -75,7 +75,7 @@ declare function OItem(
   item_id: string,
   itemstack: number,
   texture: string,
-  onRightClick: ($itemstack?: any, $world?: any) => void
+  onRightClick: ($itemstack?: any, $world?: any, $player?: any) => void
 ): void;
 
 declare namespace OItem {
@@ -223,3 +223,21 @@ declare function simplecommand(
   command_id: string,
   handler: () => void
 ): void;
+/**
+ * Executes a Minecraft command as a specific player entity.
+ *
+ * @param player - The player entity (raw or wrapped) to execute the command as.
+ * @param command - The Minecraft command to execute. Must include proper formatting
+ *                  (e.g., `/summon`, `/give`, etc.).
+ * @param [feedback=false] - If true, the command will display output in the chat.
+ *
+ * @example
+ * ```ts
+ * // Summon a custom entity at the player's current position
+ * OvenMDK__executeCommandAs(player, `/summon example_oentity 100 64 200`);
+ *
+ * // Give the player an item
+ * OvenMDK__executeCommandAs(player, `/give @p minecraft:diamond 1`);
+ * ```
+ */
+declare function OvenMDK__executeCommandAs(player: any, command: string): void;
