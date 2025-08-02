@@ -116,7 +116,15 @@ class ExampleMod extends OMod {
         */
         //console.log($player);
         //console.log(player);
-        OvenMDK__executeCommandAs($player, `/summon ExampleOEntity`, true)
+        //OvenMDK__executeCommandAs($player, `/summon ExampleOEntity`, false)
+      },
+      ($$itemstack, $$world, $$player, $$blockpos) => {
+        console.log($$blockpos);
+        var spawn_x = $$blockpos.$x;
+        var spawn_y = $$blockpos.$y + 1;
+        var spawn_z = $$blockpos.$z;
+
+        OvenMDK__executeCommandAs($$player, `/summon ExampleOEntity ${spawn_x} ${spawn_y} ${spawn_z}`, true)
       }
     );
     coolEntity_spawnegg.registerItem();

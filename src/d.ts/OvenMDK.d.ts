@@ -75,7 +75,8 @@ declare function OItem(
   item_id: string,
   itemstack: number,
   texture: string,
-  onRightClick: ($itemstack?: any, $world?: any, $player?: any) => void
+  onRightClick: ($itemstack?: any, $world?: any, $player?: any) => void,
+  onItemUse?: ($itemstack?: any, $world?: any, $player?: any, $blockpos?: any) => void
 ): void;
 
 declare namespace OItem {
