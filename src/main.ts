@@ -29,8 +29,8 @@ class ExampleMod extends OMod {
   static description: string = "Example mod for OvenMDK INDEV";
   static credits: string = "Block_2222 and BendieGames";
   static icon: string = icon;
-
-  static acceptedMinecraftVersions = ["1.8.8"];
+  static version: string = "0.0.2 DEV";
+  static acceptedMinecraftVersions = ["1.8.8", "1.12.2"];
   static acceptedEFVersions = ["2.7.94"];
 
   static init(): void {
