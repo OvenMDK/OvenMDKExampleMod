@@ -44,8 +44,10 @@ class ExampleMod extends OMod {
       1,
       itemTexture,
       ($itemstack) => {
-        ModAPI.displayToChat("Used example OItem!");
-        console.log("Used example item!");
+        if (!ModAPI.isServer) {
+          ModAPI.displayToChat("Used example OItem!");
+          console.log("Used example item!");
+        }
       }
     );
     exampleItem.registerItem();
@@ -55,8 +57,10 @@ class ExampleMod extends OMod {
       1,
       itemTexture,
       ($itemstack) => {
-        ModAPI.displayToChat("Used example OItem2!");
-        console.log("Used example item2!");
+        if (!ModAPI.isServer) {
+          ModAPI.displayToChat("Used example OItem2!");
+          console.log("Used example item2!");
+        }
       }
     );
     exampleItem2.registerItem();
@@ -99,14 +103,20 @@ class ExampleMod extends OMod {
         console.log($itemstack)
         var player = ModAPI.util.wrap($player);
         var world = ModAPI.util.wrap($world);
-        ModAPI.displayToChat("Spawned ExampleOEntity!");
-        console.log("Spawned ExampleOEntity!");
-        /*var coolEntityData = new globalThis["OEntity.example_oentity"].Entityexample_oentity(ModAPI.mc.theWorld.getRef());
+        if (!ModAPI.isServer) {
+          ModAPI.displayToChat("Spawned ExampleOEntity!");
+          console.log("Spawned ExampleOEntity!");
+        }
+        /*
+        old way of spawning mob ( DIDNT work only displayed model, not hitbox or AI )
+        var coolEntityData = new globalThis["OEntity.example_oentity"].Entityexample_oentity(ModAPI.mc.theWorld.getRef());
         var pos = player.getPosition()
         coolEntityData.$setPosition(pos.getX(), pos.getY(), pos.getZ());
         ModAPI.mc.theWorld.spawnEntityInWorld(coolEntityData);
         */
-        OvenMDK__executeCommandAs($player, `/summon example_oentity`, true)
+        //console.log($player);
+        //console.log(player);
+        OvenMDK__executeCommandAs($player, `/summon ExampleOEntity`, true)
       }
     );
     coolEntity_spawnegg.registerItem();
