@@ -48,7 +48,7 @@ declare class OvenMDK {
 }
 /**
  * Represents a custom item in the system.
- *
+ * @version 0.1
  * @param item_name - The display name of the item.
  * @param item_id - The unique identifier for the item.
  * @param itemstack - The maximum stack size for the item.
@@ -76,12 +76,18 @@ declare function OItem(
   itemstack: number,
   texture: string,
   onRightClick: ($itemstack?: any, $world?: any, $player?: any) => void,
-  onItemUse?: ($itemstack?: any, $world?: any, $player?: any, $blockpos?: any) => void
+  onItemUse?: (
+    $itemstack?: any,
+    $world?: any,
+    $player?: any,
+    $blockpos?: any
+  ) => void
 ): void;
 
 declare namespace OItem {
   /**
    * Registers the client-side handlers or assets for OItem.
+   * @version 0.1
    *
    * @example
    * ```ts
@@ -100,6 +106,7 @@ declare namespace OItem {
    */
   function registerItem(): void;
   /**
+   * @version 0.1
    * @deprecated This function is deprecated due to a
    * function that runs it, which removed the need for
    * manual activation/
@@ -110,6 +117,7 @@ declare namespace OItem {
 /**
  * Represents a custom block in the system.
  *
+ * @version 0.1
  * @param block_name - The display name of the block.
  * @param block_id - The unique identifier for the block.
  * @param texture - The texture path or identifier for the block.
@@ -139,6 +147,7 @@ declare function OBlock(
 declare namespace OBlock {
   /**
    * Registers a OBlock.
+   * @version 0.1
    *
    * @example
    * ```ts
@@ -156,6 +165,7 @@ declare namespace OBlock {
    */
   function registerBlock(): void;
   /**
+   * @version 0.1
    * @deprecated This function is deprecated due to a
    * function that runs it, which removed the need for
    * manual activation.
@@ -165,6 +175,7 @@ declare namespace OBlock {
 /**
  * Represents a custom entity in the OvenMDK environment.
  *
+ * @version 0.2
  * @param entity_name - The display name of the entity.
  * @param entity_id - The unique identifier for the entity (lowercase, unique).
  * @param texture - The texture path or base64 identifier for the entity.
@@ -192,6 +203,7 @@ declare namespace OEntity {
   /**
    * Registers the custom OEntity in the game.
    *
+   * @version 0.2
    * @example
    * ```ts
    * const CoolCow = new OEntity(
@@ -207,6 +219,7 @@ declare namespace OEntity {
 }
 /**
  * Registers a custom command in OvenMDK.
+ * @version 0.2
  *
  * @param prefix - The command prefix (should be `/` or empty).
  * @param command_id - Unique identifier for the command.
@@ -226,6 +239,8 @@ declare function simplecommand(
 ): void;
 /**
  * Executes a Minecraft command as a specific player entity.
+ *
+ * @version 0.2
  *
  * @param player - The player entity (raw or wrapped) to execute the command as.
  * @param command - The Minecraft command to execute. Must include proper formatting
