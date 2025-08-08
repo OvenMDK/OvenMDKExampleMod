@@ -257,3 +257,50 @@ declare function simplecommand(
  * ```
  */
 declare function OvenMDK__executeCommandAs(player: any, command: string): void;
+// generate tsdocs for OvenOre from main.ts
+
+/**
+ * Represents a custom ore generation configuration for oven/world generation systems.
+ *
+ * @version 0.2
+ * @param block_id - The unique identifier for the ore block to be generated.
+ * @param vein_size - The number of blocks per ore vein.
+ * @param vein_count - The number of veins generated per chunk or area.
+ * @param min_height - The minimum vertical height (Y level) at which the ore can spawn.
+ * @param max_height - The maximum vertical height (Y level) at which the ore can spawn.
+ *
+ * @example
+ * ```ts
+ * const cool_ore = new OvenOre(
+ *   "example_oblock", // blockID
+ *   4,                // vein size
+ *   250,              // vein count
+ *   0,                // min generation height
+ *   40                // max generation height
+ * );
+ *
+ * cool_ore.registerOvenOre();
+ * ```
+ */
+declare function OvenOre(
+  block_id: string,
+  vein_size: number,
+  vein_count: number,
+  min_height: number,
+  max_height: number
+): void;
+
+declare namespace OvenOre {
+  /**
+   * Registers the OvenOre for generation using the specified configuration.
+   *
+   * @version 0.2
+   *
+   * @example
+   * ```ts
+   * const myOre = new OvenOre("my_ore", 6, 20, 5, 40);
+   * myOre.registerOvenOre();
+   * ```
+   */
+  function registerOvenOre(): void;
+}

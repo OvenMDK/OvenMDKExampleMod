@@ -134,6 +134,15 @@ class ExampleMod extends OMod {
     simplecommand("/", "example_ocommand", () => {
       ModAPI.displayToChat("ran example Ocommand!");
     });
+    const cool_ore = new OvenOre(
+      "example_oblock",
+      4,
+      250,
+      0,
+      40, 
+    )
+    cool_ore.registerOvenOre();
+
   }
 }
 OvenMDK.registerMod(ExampleMod);
