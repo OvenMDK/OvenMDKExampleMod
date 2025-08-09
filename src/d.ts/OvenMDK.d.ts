@@ -180,6 +180,9 @@ declare namespace OBlock {
  * @param entity_id - The unique identifier for the entity (lowercase, unique).
  * @param texture - The texture path or base64 identifier for the entity.
  * @param model - The model name to be used (e.g., "ModelCow", "ModelPlayer").
+ * @param main_sound - The main sound of the entity.
+ * @param [entityBreedItem] - Optional breeding item for the entity.
+ * @param [entityDropItem] - Optional item dropped by the entity upon death.
  *
  * @example
  * ```ts
@@ -196,7 +199,10 @@ declare function OEntity(
   entity_name: string,
   entity_id: string,
   texture: string,
-  model: string
+  model: string,
+  main_sound: string,
+  entityBreedItem?: string,
+  entityDropItem?: string
 ): void;
 
 declare namespace OEntity {
@@ -210,7 +216,8 @@ declare namespace OEntity {
    *   "Cool Cow",
    *   "cool_cow",
    *   "textures/entities/cow.png",
-   *   "ModelCow"
+   *   "ModelCow",
+   *    cool_main_sound
    * );
    * CoolCow.registerOEntity();
    * ```
@@ -250,13 +257,13 @@ declare function simplecommand(
  * @example
  * ```ts
  * // Summon a custom entity at the player's current position
- * OvenMDK__executeCommandAs(player, `/summon example_oentity 100 64 200`);
+ * OvenMDK__executeCommandAs(player, `/summon example_oentity 100 64 200`, true);
  *
  * // Give the player an item
- * OvenMDK__executeCommandAs(player, `/give @p minecraft:diamond 1`);
+ * OvenMDK__executeCommandAs(player, `/give @p minecraft:diamond 1`, true);
  * ```
  */
-declare function OvenMDK__executeCommandAs(player: any, command: string): void;
+declare function OvenMDK__executeCommandAs(player: any, command: string, feedback: boolean): void;
 // generate tsdocs for OvenOre from main.ts
 
 /**
@@ -304,3 +311,4 @@ declare namespace OvenOre {
    */
   function registerOvenOre(): void;
 }
+
