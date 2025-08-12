@@ -202,7 +202,13 @@ declare function OEntity(
   model: string,
   main_sound: string,
   entityBreedItem?: string,
-  entityDropItem?: string
+  entityDropItem?: string,
+
+  extra_tasks?: Array<{
+    task: (this: any,) => void;
+  }>
+
+
 ): void;
 
 declare namespace OEntity {
