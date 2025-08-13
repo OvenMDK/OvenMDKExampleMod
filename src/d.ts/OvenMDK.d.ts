@@ -318,3 +318,56 @@ declare namespace OvenOre {
   function registerOvenOre(): void;
 }
 
+/**
+ * Registers a custom shaped crafting recipe in the OvenMDK environment.
+ *
+ * @version 0.3
+ *
+ * @param A - Top-left recipe slot ingredient (e.g., `"block/dirt"`, `"item/iron_ingot@1"`).
+ * @param B - Top-center recipe slot ingredient.
+ * @param C - Top-right recipe slot ingredient.
+ * @param D - Middle-left recipe slot ingredient.
+ * @param E - Middle-center recipe slot ingredient.
+ * @param F - Middle-right recipe slot ingredient.
+ * @param G - Bottom-left recipe slot ingredient.
+ * @param H - Bottom-center recipe slot ingredient.
+ * @param I - Bottom-right recipe slot ingredient.
+ * @param resultItem - The resulting crafted item or block (e.g., `"item/diamond_sword"`, `"block/stone@3"`).
+ *
+ * @remarks
+ * Each ingredient string may:
+ * - Be prefixed with `"block/"` or `"item/"` to explicitly set its type.
+ * - Include a `@meta` suffix to specify metadata (e.g., `"block/stone@1"`).
+ * - Omit the prefix, in which case it will be auto-detected using {@link ModAPI.blocks} and {@link ModAPI.items}.
+ *
+ * This function automatically detects the type (block or item) based on the ingredient string
+ * and Minecraft version (`ModAPI.is_1_12`).
+ *
+ * @example
+ * ```ts
+ * ORecipe(
+ *   "block/dirt",      // A
+ *   "block/dirt@1",    // B
+ *   "item/iron_shovel",// C
+ *   "item/gold_ingot", // D
+ *   "item/diamond",    // E
+ *   "item/iron_ingot", // F
+ *   "item/leather_leggings", // G
+ *   "item/leather_boots",    // H
+ *   "item/gunpowder",  // I
+ *   "item/paper"       // Result
+ * );
+ * ```
+ */
+declare function ORecipe(
+  A: string,
+  B: string,
+  C: string,
+  D: string,
+  E: string,
+  F: string,
+  G: string,
+  H: string,
+  I: string,
+  resultItem: string
+): void;

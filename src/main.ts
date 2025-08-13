@@ -40,7 +40,7 @@ class ExampleMod extends OMod {
     // IDs must be lowercase and unique.
     const exampleItem = new OItem(
       "Example OItem",
-      "example_oItem",
+      "example_oitem",
       1,
       itemTexture,
       ($itemstack) => {
@@ -53,7 +53,7 @@ class ExampleMod extends OMod {
     exampleItem.registerItem();
     const exampleItem2 = new OItem(
       "Example OItem2",
-      "example_oItem2",
+      "example_oitem2",
       1,
       itemTexture,
       ($itemstack) => {
@@ -74,7 +74,52 @@ class ExampleMod extends OMod {
         console.log(pos);
       }
     );
+
     customBlock.registerBlock();
+
+    // Wait until block is registered before continuing
+    waitForRegistry("example_oblock").then(() => {
+      waitForRegistry("example_oitem").then(() => {
+        const cool_recipe = new ORecipe(
+          "example_oblock",
+          "example_oblock",
+          "example_oblock",
+          "example_oblock",
+          "example_oblock",
+          "example_oblock",
+          "example_oblock",
+          "example_oblock",
+          "example_oblock",
+          "example_oitem"
+        );
+        cool_recipe.registerORecipe();
+      });
+    });
+
+
+    function waitForRegistry(id: string, interval = 50, timeout = 5000): Promise<void> {
+      return new Promise<void>((resolve, reject) => {
+        const start = Date.now();
+
+        const check = () => {
+          const blockExists = ModAPI.blocks && ModAPI.blocks[id];
+          const itemExists = ModAPI.items && ModAPI.items[id];
+
+          if (blockExists || itemExists) {
+            resolve();
+          } else if (Date.now() - start >= timeout) {
+            reject(new Error(`Timeout: "${id}" was not registered in time`));
+          } else {
+            setTimeout(check, interval);
+          }
+        };
+
+        check();
+      });
+    }
+
+
+
     const customBlock2 = new OBlock(
       "Example OBlock2",
       "example_oblock2",
@@ -97,7 +142,8 @@ class ExampleMod extends OMod {
       "wheat",
       "leather"
     );
-    coolEntity.registerOEntity();
+    coolEntity.registerOEntity()
+
 
     customBlock2.registerBlock();
     // DEV NOTE: OCommands are not yet implemented in OvenMDK, this is just an placeholder for the name.
