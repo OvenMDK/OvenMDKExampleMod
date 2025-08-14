@@ -80,7 +80,7 @@ class ExampleMod extends OMod {
     // Wait until block is registered before continuing
     waitForRegistry("example_oblock").then(() => {
       waitForRegistry("example_oitem").then(() => {
-        const cool_recipe = new ORecipe(
+        new ORecipe(
           "example_oblock",
           "example_oblock",
           "example_oblock",
@@ -92,7 +92,6 @@ class ExampleMod extends OMod {
           "example_oblock",
           "example_oitem"
         );
-        cool_recipe.registerORecipe();
       });
     });
 
