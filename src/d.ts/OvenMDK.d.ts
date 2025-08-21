@@ -141,7 +141,8 @@ declare function OBlock(
   block_name: string,
   block_id: string,
   texture: string,
-  onBreak?: ($world: any, $blockpos: any, $blockstate: any) => void
+  onBreak?: ($world: any, $blockpos: any, $blockstate: any) => void,
+  droppedItem?: string
 ): void;
 
 declare namespace OBlock {
@@ -370,4 +371,42 @@ declare function ORecipe(
   H: string,
   I: string,
   resultItem: string
+): void;
+/**
+ * Registers a custom furnace smelting recipe in the OvenMDK environment.
+ *
+ * @version 0.4
+ *
+ * @param input_item - The input item or block to be smelted (e.g., `"item/raw_iron"`, `"block/cobblestone@2"`).
+ * @param resultItem - The resulting item or block after smelting (e.g., `"item/iron_ingot"`, `"block/stone@1"`).
+ * @param experience - The amount of experience the player receives when smelting is complete.
+ *
+ * @remarks
+ * Each item string can:
+ * - Be prefixed with `"block/"` or `"item/"` to explicitly define its type.
+ * - Include an optional `@meta` suffix to specify metadata (e.g., `"item/fish@1"`).
+ * - Omit the prefix, in which case the type will be auto-detected using {@link ModAPI.blocks} and {@link ModAPI.items}.
+ *
+ * This function ensures compatibility with Minecraft 1.8.8 and will issue a warning if called in 1.12.2 (`ModAPI.is_1_12`).
+ * Recipe registration happens immediately if the mod environment is ready, or is deferred until the `bootstrap` event.
+ *
+ * @example
+ * ```ts
+ * OFurnanceRecipe(
+ *   "item/raw_gold",     // Input
+ *   "item/gold_ingot",   // Output
+ *   0.7                  // Experience
+ * );
+ *
+ * OFurnanceRecipe(
+ *   "block/clay@2",      // Input with metadata
+ *   "item/brick",        // Output
+ *   0.3                  // Experience
+ * );
+ * ```
+ */
+declare function OFurnanceRecipe(
+  input_item: string,
+  resultItem: string,
+  experience: number
 ): void;

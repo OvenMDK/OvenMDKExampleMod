@@ -92,6 +92,11 @@ class ExampleMod extends OMod {
           "example_oblock",
           "example_oitem"
         );
+        new OFurnanceRecipe(
+          "example_oitem",
+          "example_oitem2",
+          0.3
+        )
       });
     });
 
@@ -149,7 +154,8 @@ class ExampleMod extends OMod {
     simplecommand("/", "example_ocommand", () => {
       ModAPI.displayToChat("ran example Ocommand!");
     });
-    const cool_ore = new OvenOre("example_oblock", 4, 250, 0, 40);
+    // WARNING UNCOMMENTING THE CODE MAY OVERWRITE OTHER MODS USING OVEN ORES ( Other ores from other mods wont gen )
+    const cool_ore = new OvenOre("example_oblock", 4, 50, 0, 40);
     cool_ore.registerOvenOre();
   }
 }
